@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     float dashRefresh = 0;
     float bounceTime = 0;
     private bool ridingMovingPlatform = false;
+    private bool CanUnlock = false;
 
     // Start is called before the first frame update
     void Start()
@@ -170,6 +171,12 @@ public class PlayerMovement : MonoBehaviour
             dashTime = DashDuration;
             dashRefresh = DashCooldown;
         }
+    }
+
+    public bool Unlock(GameObject obj)
+    {
+        CanUnlock = obj.GetComponent<GateEvent>().Trigger();
+        return CanUnlock;
     }
 
     public void Interact(InputAction.CallbackContext ctx)

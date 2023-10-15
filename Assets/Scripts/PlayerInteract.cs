@@ -11,6 +11,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField ]private int maxHealth = 3;
     private int health = 0;
     [SerializeField]private int money = 0;
+    private bool DidUnlock = false;
 
     [SerializeField] private float invincibleTime = 1;
     private float invincibleTimer = 0;
@@ -66,7 +67,14 @@ public class PlayerInteract : MonoBehaviour
                 other.GetComponent<Refresher>().Collect();
                 this.GetComponent<PlayerMovement>().ResetAirJump();
                 break;
-        
+            case "Gate":
+                DidUnlock = other.GetComponent<GateEvent>().Trigger();
+                if (DidUnlock)
+                {
+                    money -= other.GetComponent<GateEvent>().UnlockAmount();
+                    moneyText.UpdatePoints(money);
+                }
+                break;        
         }
     }
 
