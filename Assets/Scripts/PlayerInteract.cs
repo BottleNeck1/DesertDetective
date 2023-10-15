@@ -95,6 +95,12 @@ public class PlayerInteract : MonoBehaviour
         moneyText.UpdatePoints(money);
         Destroy(obj);
         soundsScript.PlayCollectSound();
+        print(money);
+    }
+
+    public int GetMoney()
+    {
+        return money;
     }
 
     public void WinLevel(){

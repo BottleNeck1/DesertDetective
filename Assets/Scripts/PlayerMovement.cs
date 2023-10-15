@@ -171,4 +171,12 @@ public class PlayerMovement : MonoBehaviour
             dashRefresh = DashCooldown;
         }
     }
+
+    public void Interact(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            print("good job");
+        }
+    }
 }

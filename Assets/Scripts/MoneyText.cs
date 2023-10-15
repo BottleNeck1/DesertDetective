@@ -6,7 +6,7 @@ using TMPro;
 public class MoneyText : MonoBehaviour
 {
     public TMP_Text text;
-    public string baseText = "Points: ";
+    public string baseText = "Spare change: ";
     // Start is called before the first frame update
     public void UpdatePoints(int amount){
         text.text = baseText + amount;
