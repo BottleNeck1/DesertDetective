@@ -9,7 +9,7 @@ public class GateEvent : MonoBehaviour
     [SerializeField] private int ToUnlock = 5;
     private int PlayerCoins;
     private bool CanTrigger = false;
-    private GameObject Gate;
+    private GameObject Gate = null;
    
     public int GetPlayerMoney(GameObject obj)
     {
@@ -23,22 +23,18 @@ public class GateEvent : MonoBehaviour
         PlayerCoins = GetPlayerMoney(PlayerObject);
         if (other.gameObject.name == "Player")
         {
-            print(other.gameObject.name + " has entered with " + PlayerCoins + " coins");  
-        }
-
-        if(PlayerCoins >= ToUnlock)
-        {
-            CanTrigger = true;
-        } 
-        else
-        {
-            CanTrigger = false;
-        }
-        
-        if(CanTrigger)
-        {
+            print(other.gameObject.name + " has entered with " + PlayerCoins + " coins");
+            //GetComponent<PlayerInteract>().SetGate(transform.parent.gameObject);
             Gate = transform.parent.gameObject;
-            Destroy(Gate, 0.10f);
+
+            if (PlayerCoins >= ToUnlock && Gate != null)
+            {
+                CanTrigger = true;
+            }
+            else
+            {
+                CanTrigger = false;
+            }
         }
     }
 
@@ -47,6 +43,8 @@ public class GateEvent : MonoBehaviour
         if (other.gameObject.name == "Player")
         {
             CanTrigger = false;
+            //GetComponent<PlayerInteract>().SetGate(null);
+            Gate = null;
         }
         
     }
@@ -60,19 +58,4 @@ public class GateEvent : MonoBehaviour
     {
         return ToUnlock;
     }
-
-    /*
-     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    */
 }

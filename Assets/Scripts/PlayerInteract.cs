@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField ]private int maxHealth = 3;
     private int health = 0;
     [SerializeField]private int money = 0;
-    private bool DidUnlock = false;
+    private GameObject GateObject;
+    private bool CanUnlock = false;
+    private int UnlockAmount = 0;
 
     [SerializeField] private float invincibleTime = 1;
     private float invincibleTimer = 0;
@@ -68,15 +71,25 @@ public class PlayerInteract : MonoBehaviour
                 this.GetComponent<PlayerMovement>().ResetAirJump();
                 break;
             case "Gate":
-                DidUnlock = other.GetComponent<GateEvent>().Trigger();
-                if (DidUnlock)
-                {
-                    money -= other.GetComponent<GateEvent>().UnlockAmount();
-                    moneyText.UpdatePoints(money);
-                }
-                break;        
+                UnlockAmount = other.GetComponent<GateEvent>().UnlockAmount();
+                CanUnlock = other.GetComponent<GateEvent>().Trigger();
+                GateObject = other.transform.parent.gameObject;
+                print(GateObject);
+                break;
         }
     }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        GameObject other = col.gameObject; 
+        switch (other.tag)
+        {
+            case "Gate":
+                CanUnlock = other.GetComponent<GateEvent>().Trigger();
+                break;
+        }
+    }
+
 
     public void Damage(GameObject obj){
         if(invincible){
@@ -103,12 +116,27 @@ public class PlayerInteract : MonoBehaviour
         moneyText.UpdatePoints(money);
         Destroy(obj);
         soundsScript.PlayCollectSound();
-        print(money);
     }
 
     public int GetMoney()
     {
         return money;
+    }
+
+    public bool GetCanUnlock()
+    {
+        return CanUnlock;
+    }
+
+    public void RemoveMoney()
+    {
+        money -= UnlockAmount;
+        moneyText.UpdatePoints(money);
+    }
+    
+    public GameObject GateReturn()
+    {
+        return GateObject;
     }
 
     public void WinLevel(){

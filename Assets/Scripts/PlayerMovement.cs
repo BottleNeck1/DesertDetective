@@ -173,17 +173,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public bool Unlock(GameObject obj)
-    {
-        CanUnlock = obj.GetComponent<GateEvent>().Trigger();
-        return CanUnlock;
-    }
-
     public void Interact(InputAction.CallbackContext ctx)
-    {
+    {        
         if (ctx.started)
         {
-            print("good job");
+            CanUnlock = GetComponent<PlayerInteract>().GetCanUnlock();
+            if (CanUnlock)
+            {
+                GameObject other = GetComponent<PlayerInteract>().GateReturn();    
+
+                GetComponent<PlayerInteract>().RemoveMoney();
+                Destroy(other, 0.10f);
+            }
+        }
+        else if (ctx.canceled)
+        {
+            CanUnlock = GetComponent<PlayerInteract>().GetCanUnlock();
         }
     }
 }
