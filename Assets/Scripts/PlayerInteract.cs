@@ -72,9 +72,8 @@ public class PlayerInteract : MonoBehaviour
                 break;
             case "Gate":
                 UnlockAmount = other.GetComponent<GateEvent>().UnlockAmount();
-                CanUnlock = other.GetComponent<GateEvent>().Trigger();
+                CanUnlock = SetCanUnlock(UnlockAmount);
                 GateObject = other.transform.parent.gameObject;
-                print(GateObject);
                 break;
         }
     }
@@ -85,7 +84,7 @@ public class PlayerInteract : MonoBehaviour
         switch (other.tag)
         {
             case "Gate":
-                CanUnlock = other.GetComponent<GateEvent>().Trigger();
+                CanUnlock = false;
                 break;
         }
     }
@@ -122,7 +121,17 @@ public class PlayerInteract : MonoBehaviour
     {
         return money;
     }
-
+    public bool SetCanUnlock(int Amount)
+    {
+        if(money >= Amount)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public bool GetCanUnlock()
     {
         return CanUnlock;

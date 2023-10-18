@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = groundedBox;
         if (isGrounded)
         {
+            print("tests");
             Moving_Platform platformScript = groundedBox.transform.GetComponentInChildren<Moving_Platform>();
             if (platformScript)
             {
