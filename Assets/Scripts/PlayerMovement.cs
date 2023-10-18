@@ -192,4 +192,9 @@ public class PlayerMovement : MonoBehaviour
             CanUnlock = GetComponent<PlayerInteract>().GetCanUnlock();
         }
     }
+
+    public void Shoot(InputAction.CallbackContext ctx)
+    {
+
+    }
 }
