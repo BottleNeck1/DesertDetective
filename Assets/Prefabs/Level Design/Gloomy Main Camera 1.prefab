@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 3818749242101363750}
   - component: {fileID: 1083926835425057279}
   - component: {fileID: 529993432564478385}
+  - component: {fileID: 2778431409977675077}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Gloomy Main Camera 1
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,3 +108,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinBounds: {x: -100, y: -100}
   MaxBounds: {x: 100, y: 100}
+--- !u!114 &2778431409977675077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2160547106282405789}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 0}

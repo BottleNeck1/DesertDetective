@@ -244,22 +244,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 93c4422b-affc-4c24-b491-2ceae70c612a
     m_ActionName: Player/Dash[/Keyboard/shift]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4641218218592816525}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: Interact
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 841f7fda-efba-4a6a-8efb-d9a759365367
-    m_ActionName: Player/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1000,50 +984,6 @@ PrefabInstance:
     - target: {fileID: 517691821568297520, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1548930906991785464, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1548930906991785464, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1548930906991785464, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 133.93842
-      objectReference: {fileID: 0}
-    - target: {fileID: 1548930906991785464, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 33.030823
-      objectReference: {fileID: 0}
-    - target: {fileID: 3535522886458433850, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
-      propertyPath: m_text
-      value: 'Spare change: 0'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3535522886458433850, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
-      propertyPath: m_margin.w
-      value: -3.2370605
-      objectReference: {fileID: 0}
-    - target: {fileID: 3535522886458433850, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
-      propertyPath: m_margin.x
-      value: -108.80719
-      objectReference: {fileID: 0}
-    - target: {fileID: 3535522886458433850, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
-      propertyPath: m_margin.z
-      value: -66.061615
-      objectReference: {fileID: 0}
-    - target: {fileID: 4398042736943329125, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -697.1494
-      objectReference: {fileID: 0}
-    - target: {fileID: 4398042736943329125, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -348.57468
-      objectReference: {fileID: 0}
-    - target: {fileID: 4804484387799211665, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
-      propertyPath: baseText
-      value: 'Spare change:'
       objectReference: {fileID: 0}
     - target: {fileID: 6946509600971281119, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
       propertyPath: m_Name

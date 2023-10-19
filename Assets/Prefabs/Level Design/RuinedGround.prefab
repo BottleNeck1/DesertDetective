@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9196841027873074533}
   - component: {fileID: 5056430271583115653}
   m_Layer: 0
-  m_Name: Ceiling
+  m_Name: RuinedGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 6748031768403492021}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.39, y: -0.82, z: 0}
-  m_LocalScale: {x: 0.54, y: 0.54, z: 0.54}
+  m_LocalPosition: {x: -6.83, y: 0.63, z: 0}
+  m_LocalScale: {x: 5.966107, y: 3.5855255, z: 0.54}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1414815563, guid: 648144694bddbc244a79be13518604a2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ee8fcdc0c42e4a7897162aa81754ea1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,16 +117,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.09000015, y: 0.18283045}
+  m_Offset: {x: 0.0022079945, y: -0.0018387139}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.4}
-    oldSize: {x: 23.603092, y: 5.14}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.4, y: 1.16}
     newSize: {x: 23.603092, y: 5.14}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 23.603092, y: 4.5421953}
+  m_Size: {x: 2.4247994, y: 1.2109911}
   m_EdgeRadius: 0
