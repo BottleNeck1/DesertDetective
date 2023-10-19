@@ -171,6 +171,7 @@ MonoBehaviour:
   JumpForce: 15
   DashDuration: 0.2
   DashCooldown: 0.5
+  ball: {fileID: 8899844144299064845, guid: 073d6db091107bb45b76ad27bb06e1e9, type: 3}
 --- !u!114 &3572922653149832876
 MonoBehaviour:
   m_ObjectHideFlags: 0

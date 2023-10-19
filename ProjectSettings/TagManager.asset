@@ -10,6 +10,8 @@ TagManager:
   - EnemyHead
   - Bouncy
   - Refresher
+  - Gate
+  - PlayerBall
   layers:
   - Default
   - TransparentFX

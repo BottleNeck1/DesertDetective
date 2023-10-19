@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float walkRange;
     [SerializeField] private float attackRange;
     [SerializeField] private EnemySounds soundsScript;
+    [SerializeField] private int health = 2;
+    
     private float timeSinceLastAttack = 0;
 
     public bool attack;
@@ -75,5 +78,40 @@ public class Enemy : MonoBehaviour
         ballInstance.GetComponent<Ball>().Go();
         
         attack = false;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject other = collision.gameObject;
+        switch (other.tag)
+        {
+            case "PlayerBall":
+                //print("test");
+                Damage(other);
+                break;
+        }
+    }
+    public void Damage(GameObject obj)
+    {
+        health -= obj.GetComponent<harmful>().GetDamage();
+        if (health <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            soundsScript.PlayDamageSound();
+            //Vector2 DamageForceVector = (this.transform.position - obj.transform.position).normalized * obj.GetComponent<harmful>().GetDamage() * 10;
+            //DamageForceVector.y = 5;
+            //this.GetComponent<Rigidbody2D>().AddForce(DamageForceVector, ForceMode2D.Impulse);
+        }
+        //sprite.color = hurtColor;
+
+    }
+
+    public void Die()
+    {
+        //soundsScript.PlayDeathSound();
+        Object.Destroy(this);
     }
 }

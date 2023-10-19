@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("The force applied during a jump")] float JumpForce = 20;
     [SerializeField, Tooltip("The duration of a dash")] float DashDuration = 0.2f;
     [SerializeField, Tooltip("The cooldown of a dash")] float DashCooldown = 0.5f;
+    [SerializeField] GameObject ball;
     private Animator animator;
     bool isGrounded = false;
     bool AirJumpReady = true;
@@ -32,7 +34,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-      //  rb.AddForce(MovementInput * MovementSpeed, ForceMode2D.Force);
+        //Vector2 dist = this.transform.position - transform.position;
+        //animator.SetBool("FaceLeft", dist.x < 0);
+        //  rb.AddForce(MovementInput * MovementSpeed, ForceMode2D.Force);
         if (dashTime > 0)
         {
             rb.AddForce(new Vector2(MovementDirection.x * DashSpeed * 10, 0));
@@ -65,7 +69,6 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = groundedBox;
         if (isGrounded)
         {
-            print("tests");
             Moving_Platform platformScript = groundedBox.transform.GetComponentInChildren<Moving_Platform>();
             if (platformScript)
             {
@@ -195,6 +198,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext ctx)
     {
+        if (ctx.started)
+        {
+            //soundsScript.PlayAttackSound();
+            //animator.SetTrigger("Attack");
 
+            GameObject ballInstance = Instantiate(ball, transform.position, transform.rotation);
+            ballInstance.GetComponent<Ball>().SetDirection(animator.GetBool("FacingRight") ? 1 : -1);
+            ballInstance.GetComponent<Ball>().Go();
+        } 
     }
 }
