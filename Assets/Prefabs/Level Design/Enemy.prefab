@@ -112,6 +112,7 @@ MonoBehaviour:
   walkRange: 10
   attackRange: 25
   soundsScript: {fileID: 0}
+  health: 2
   attack: 0
 --- !u!70 &3186488351814037684
 CapsuleCollider2D:

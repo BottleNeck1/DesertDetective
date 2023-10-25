@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("The force applied during a jump")] float JumpForce = 20;
     [SerializeField, Tooltip("The duration of a dash")] float DashDuration = 0.2f;
     [SerializeField, Tooltip("The cooldown of a dash")] float DashCooldown = 0.5f;
+    [SerializeField, Tooltip("The cooldown of shooting")] float ShootCooldown = 3.0f;
     [SerializeField] GameObject ball;
     private Animator animator;
     bool isGrounded = false;
@@ -21,8 +22,10 @@ public class PlayerMovement : MonoBehaviour
     float dashTime = 0;
     float dashRefresh = 0;
     float bounceTime = 0;
+    float shootRefresh = 0;
     private bool ridingMovingPlatform = false;
     private bool CanUnlock = false;
+    private bool canShoot = false;
 
     // Start is called before the first frame update
     void Start()
@@ -101,6 +104,8 @@ public class PlayerMovement : MonoBehaviour
         else if (isGrounded)
             DashReady = true;
 
+        if(shootRefresh > 0)
+            shootRefresh -= Time.deltaTime;
     }
 
     public void Bounce(Vector2 forceVector)
@@ -126,6 +131,11 @@ public class PlayerMovement : MonoBehaviour
     public void ResetAirJump()
     {
         AirJumpReady = true;
+    }
+
+    public void ResetShoot()
+    {
+        canShoot = true;
     }
     
     public void Move(InputAction.CallbackContext ctx)
@@ -198,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
+        if (ctx.started && canShoot)
         {
             //soundsScript.PlayAttackSound();
             //animator.SetTrigger("Attack");
@@ -206,6 +216,8 @@ public class PlayerMovement : MonoBehaviour
             GameObject ballInstance = Instantiate(ball, transform.position, transform.rotation);
             ballInstance.GetComponent<Ball>().SetDirection(animator.GetBool("FacingRight") ? 1 : -1);
             ballInstance.GetComponent<Ball>().Go();
+            canShoot = false;
+            shootRefresh = ShootCooldown;
         } 
     }
 }

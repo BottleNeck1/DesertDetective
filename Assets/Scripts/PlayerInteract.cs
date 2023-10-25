@@ -60,8 +60,8 @@ public class PlayerInteract : MonoBehaviour
             case "EnemyHead":
                 Destroy(other.transform.root.gameObject);
                 this.GetComponent<PlayerMovement>().Bounce(Vector2.up * 10);
-                money += 3;
-                moneyText.UpdatePoints(money);
+                //money += 3;
+                //moneyText.UpdatePoints(money);
                 break;
             case "Bouncy":
                 this.GetComponent<PlayerMovement>().Bounce(other.transform.up * 25);

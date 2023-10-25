@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject player;
     private Animator animator;
+    private SpriteRenderer sprite;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponentInChildren<Rigidbody2D>();
         animator = GetComponent<Animator>();
         soundsScript = GetComponent<EnemySounds>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -86,32 +88,15 @@ public class Enemy : MonoBehaviour
         switch (other.tag)
         {
             case "PlayerBall":
-                //print("test");
-                Damage(other);
+                /*print(this + "  test");
+                print(other + "   test2");*/
+                Destroy(other.transform.root.gameObject);
+                health -= other.GetComponent<harmful>().GetDamage();
+                if (health <= 0)
+                {
+                    Destroy(this.transform.root.gameObject);
+                }
                 break;
         }
-    }
-    public void Damage(GameObject obj)
-    {
-        health -= obj.GetComponent<harmful>().GetDamage();
-        if (health <= 0)
-        {
-            Die();
-        }
-        else
-        {
-            soundsScript.PlayDamageSound();
-            //Vector2 DamageForceVector = (this.transform.position - obj.transform.position).normalized * obj.GetComponent<harmful>().GetDamage() * 10;
-            //DamageForceVector.y = 5;
-            //this.GetComponent<Rigidbody2D>().AddForce(DamageForceVector, ForceMode2D.Impulse);
-        }
-        //sprite.color = hurtColor;
-
-    }
-
-    public void Die()
-    {
-        //soundsScript.PlayDeathSound();
-        Object.Destroy(this);
     }
 }
