@@ -377,6 +377,7 @@ MonoBehaviour:
   moneyText: {fileID: 5335834537932638732}
   WinScreen: {fileID: 1451218173432162713}
   LoseScreen: {fileID: 2244396142329006914}
+  CoinScreen: {fileID: 7549917023017961026}
   soundsScript: {fileID: 0}
   maxHealth: 3
   money: 0
@@ -1082,7 +1083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6946509600971281119, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: CoinCanvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1105,6 +1106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1149b8c1becf8ef45a0e458334403b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7549917023017961026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6946509600971281119, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
+  m_PrefabInstance: {fileID: 621571676598097053}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8378162677884140358
 PrefabInstance:
   m_ObjectHideFlags: 0

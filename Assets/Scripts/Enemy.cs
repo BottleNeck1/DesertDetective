@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Scripting;
 using UnityEngine.U2D;
 
 public class Enemy : MonoBehaviour
@@ -89,9 +90,7 @@ public class Enemy : MonoBehaviour
         GameObject other = collision.gameObject;
         switch (other.tag)
         {
-            case "PlayerBall":
-                /*print(this + "  test");
-                print(other + "   test2");*/
+            case "PlayerBall":           
                 Destroy(other.transform.root.gameObject);
                 health -= other.GetComponent<harmful>().GetDamage();
                 if (health <= 0)

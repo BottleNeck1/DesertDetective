@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ public class PlayerInteract : MonoBehaviour
     public MoneyText moneyText;
     [SerializeField] private GameObject WinScreen;
     [SerializeField] private GameObject LoseScreen;
+    [SerializeField] private GameObject CoinScreen;
     [SerializeField, Tooltip("the script to play sounds")] private PlayerSounds soundsScript;
     [SerializeField ]private int maxHealth = 3;
     private int health = 0;
@@ -33,6 +35,7 @@ public class PlayerInteract : MonoBehaviour
         if(!soundsScript){
             soundsScript = GetComponent<PlayerSounds>();
         }
+        CoinScreen.SetActive(true);
     }
 
     private void FixedUpdate() {
@@ -164,12 +167,14 @@ public class PlayerInteract : MonoBehaviour
         Time.timeScale = 0;
         WinScreen.transform.SetParent(null);
         WinScreen.SetActive(true);
+        CoinScreen.SetActive(false);
         soundsScript.PlayWinSound();
     }
 
     public void Die(){
         LoseScreen.transform.SetParent(null);
         LoseScreen.SetActive(true);
+        CoinScreen.SetActive(false);
         soundsScript.PlayDeathSound();
         sprite.enabled = false;
         this.enabled=false;
