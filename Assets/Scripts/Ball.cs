@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    [SerializeField] int speed = 7;
     int direction = 1;
     bool moving = false;
 
@@ -23,7 +24,7 @@ public class Ball : MonoBehaviour
     {
         if (moving)
         {
-            this.gameObject.transform.position = new Vector3(transform.position.x + direction * 7 * Time.deltaTime, transform.position.y, transform.position.z);
+            this.gameObject.transform.position = new Vector3(transform.position.x + direction * speed * Time.deltaTime, transform.position.y, transform.position.z);
             //Debug.Log(transform.position);
 
         }

@@ -75,6 +75,18 @@ public class PlayerInteract : MonoBehaviour
                 CanUnlock = SetCanUnlock(UnlockAmount);
                 GateObject = other.transform.parent.gameObject;
                 break;
+            case "DoubleJump":
+                this.GetComponent<PlayerMovement>().SetDoubleJumpUnlock();
+                break;
+            case "Dash":
+                this.GetComponent<PlayerMovement>().SetDashUnlock();
+                break;
+            case "Shoot":
+                this.GetComponent<PlayerMovement>().SetShootUnlock();
+                break;
+            case "Cloak":
+                this.GetComponent<PlayerMovement>().SetCloakUnlock();
+                break;
         }
     }
 

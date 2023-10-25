@@ -171,6 +171,8 @@ MonoBehaviour:
   JumpForce: 15
   DashDuration: 0.2
   DashCooldown: 0.5
+  ShootCooldown: 3
+  CloakCooldown: 3
   ball: {fileID: 8899844144299064845, guid: 073d6db091107bb45b76ad27bb06e1e9, type: 3}
 --- !u!114 &3572922653149832876
 MonoBehaviour:
@@ -277,6 +279,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0e8e4912-0818-40d6-b50e-84f107419c71
     m_ActionName: Player/Shoot[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4641218218592816525}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: InvisibleClock
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: cbeb2632-583b-4b43-8666-fd2a97bd35db
+    m_ActionName: Player/InvisibleClock[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

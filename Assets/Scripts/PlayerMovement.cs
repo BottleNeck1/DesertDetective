@@ -14,18 +14,27 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("The duration of a dash")] float DashDuration = 0.2f;
     [SerializeField, Tooltip("The cooldown of a dash")] float DashCooldown = 0.5f;
     [SerializeField, Tooltip("The cooldown of shooting")] float ShootCooldown = 3.0f;
+    [SerializeField, Tooltip("The cooldown of cloaking")] float CloakCooldown = 5.0f;
     [SerializeField] GameObject ball;
     private Animator animator;
     bool isGrounded = false;
     bool AirJumpReady = true;
     bool DashReady = false;
+    bool ShootReady = false;
+    bool CloakReady = false;
+    bool inCloak = false;
     float dashTime = 0;
     float dashRefresh = 0;
     float bounceTime = 0;
     float shootRefresh = 0;
+    float cloakRefresh = 0;
     private bool ridingMovingPlatform = false;
     private bool CanUnlock = false;
-    private bool canShoot = false;
+
+    private bool DoubleJumpUnlock = true;
+    private bool DashUnlock = true;
+    private bool ShootUnlock = true;
+    private bool CloakUnlock = true;
 
     // Start is called before the first frame update
     void Start()
@@ -106,6 +115,15 @@ public class PlayerMovement : MonoBehaviour
 
         if(shootRefresh > 0)
             shootRefresh -= Time.deltaTime;
+        else ShootReady = true;
+
+        if (cloakRefresh > 0)
+            cloakRefresh -= Time.deltaTime;
+        else
+        {
+            CloakReady = true;
+            inCloak = false;
+        }
     }
 
     public void Bounce(Vector2 forceVector)
@@ -131,11 +149,6 @@ public class PlayerMovement : MonoBehaviour
     public void ResetAirJump()
     {
         AirJumpReady = true;
-    }
-
-    public void ResetShoot()
-    {
-        canShoot = true;
     }
     
     public void Move(InputAction.CallbackContext ctx)
@@ -166,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(new Vector2(0, 1) * JumpForce, ForceMode2D.Impulse);
         }
-        else if (AirJumpReady && ctx.started)
+        else if (AirJumpReady && ctx.started && DoubleJumpUnlock)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0, 1) * JumpForce, ForceMode2D.Impulse);
@@ -176,7 +189,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext ctx)
     {
-        if (DashReady && ctx.started)
+        if (DashReady && ctx.started && DashUnlock)
         {
             if (MovementDirection.x == 0)
                 MovementDirection.x = animator.GetBool("FacingRight") ? 1 : -1;
@@ -208,16 +221,52 @@ public class PlayerMovement : MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext ctx)
     {
-        if (ctx.started && canShoot)
+        if (ctx.started && ShootReady && ShootUnlock)
         {
             //soundsScript.PlayAttackSound();
             //animator.SetTrigger("Attack");
-
             GameObject ballInstance = Instantiate(ball, transform.position, transform.rotation);
             ballInstance.GetComponent<Ball>().SetDirection(animator.GetBool("FacingRight") ? 1 : -1);
             ballInstance.GetComponent<Ball>().Go();
-            canShoot = false;
+            ShootReady = false;
             shootRefresh = ShootCooldown;
         } 
     }
+
+    public void InvisibleClock(InputAction.CallbackContext ctx)
+    {
+        if(ctx.started && CloakReady && CloakUnlock)
+        {
+            inCloak = true;
+            print("in cloak");
+            CloakReady = false;
+            cloakRefresh = CloakCooldown;
+        }
+    }
+
+    public bool GetIsCloaked()
+    {
+        return inCloak;
+    }
+
+    public void SetDoubleJumpUnlock()
+    {
+        DoubleJumpUnlock = true;
+    }
+
+    public void SetDashUnlock() 
+    {
+        DashUnlock = true;
+    }
+
+    public void SetShootUnlock()
+    {
+        ShootUnlock = true;
+    }
+
+    public void SetCloakUnlock()
+    {
+        CloakUnlock = true;
+    }
 }
+

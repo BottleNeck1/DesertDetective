@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     private float timeSinceLastAttack = 0;
 
     public bool attack;
+    bool playerCloaked = false;
 
     private Rigidbody2D rb;
     private GameObject player;
@@ -36,7 +37,8 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         timeSinceLastAttack += Time.deltaTime;
-        if (player != null)
+        playerCloaked = player.GetComponent<PlayerMovement>().GetIsCloaked();
+        if (player != null && !playerCloaked)
         {
 
             Vector2 dist = player.transform.position - transform.position;
