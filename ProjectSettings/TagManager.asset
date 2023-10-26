@@ -12,6 +12,10 @@ TagManager:
   - Refresher
   - Gate
   - PlayerBall
+  - DoubleJump
+  - Dash
+  - Shoot
+  - Cloak
   layers:
   - Default
   - TransparentFX

@@ -31,10 +31,10 @@ public class PlayerMovement : MonoBehaviour
     private bool ridingMovingPlatform = false;
     private bool CanUnlock = false;
 
-    private bool DoubleJumpUnlock = true;
-    private bool DashUnlock = true;
-    private bool ShootUnlock = true;
-    private bool CloakUnlock = true;
+    private bool DoubleJumpUnlock = false;
+    private bool DashUnlock = false;
+    private bool ShootUnlock = false;
+    private bool CloakUnlock = false;
 
     // Start is called before the first frame update
     void Start()
@@ -150,6 +150,11 @@ public class PlayerMovement : MonoBehaviour
     {
         AirJumpReady = true;
     }
+
+    public float GetCloakRefresh()
+    {
+        return cloakRefresh;
+    }
     
     public void Move(InputAction.CallbackContext ctx)
     {
@@ -238,7 +243,6 @@ public class PlayerMovement : MonoBehaviour
         if(ctx.started && CloakReady && CloakUnlock)
         {
             inCloak = true;
-            print("in cloak");
             CloakReady = false;
             cloakRefresh = CloakCooldown;
         }

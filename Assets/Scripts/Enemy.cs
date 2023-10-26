@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject player;
     private Animator animator;
-    private SpriteRenderer sprite;
+    //private SpriteRenderer sprite;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponentInChildren<Rigidbody2D>();
         animator = GetComponent<Animator>();
         soundsScript = GetComponent<EnemySounds>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
+        //sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -100,6 +100,7 @@ public class Enemy : MonoBehaviour
                 if(canDamage)
                 {
                     health -= other.GetComponent<harmful>().GetDamage();
+                    damageRefresh = damageCooldown;
                     canDamage = false;
                 }
                 if (health <= 0)
