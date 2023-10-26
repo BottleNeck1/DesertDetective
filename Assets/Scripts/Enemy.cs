@@ -44,7 +44,6 @@ public class Enemy : MonoBehaviour
         playerCloaked = player.GetComponent<PlayerMovement>().GetIsCloaked();
         if (player != null && !playerCloaked)
         {
-
             Vector2 dist = player.transform.position - transform.position;
             Vector2 dir = dist.normalized;
             if (dist.magnitude < attackRange && timeSinceLastAttack > 2)
