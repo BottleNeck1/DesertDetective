@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackRange;
     [SerializeField] private EnemySounds soundsScript;
     [SerializeField] private int health = 2;
+    [SerializeField] float damageCooldown = 0.5f;
+    float damageRefresh = 0;
+    bool canDamage = false;
     
     private float timeSinceLastAttack = 0;
 
@@ -71,6 +74,10 @@ public class Enemy : MonoBehaviour
         
         if (attack)
             Attack();
+
+        if (damageRefresh > 0)
+            damageRefresh -= Time.deltaTime;
+        else canDamage = true;
     }
 
     void Attack()
@@ -90,13 +97,17 @@ public class Enemy : MonoBehaviour
         GameObject other = collision.gameObject;
         switch (other.tag)
         {
-            case "PlayerBall":           
-                Destroy(other.transform.root.gameObject);
-                health -= other.GetComponent<harmful>().GetDamage();
+            case "PlayerBall":    
+                if(canDamage)
+                {
+                    health -= other.GetComponent<harmful>().GetDamage();
+                    canDamage = false;
+                }
                 if (health <= 0)
                 {
                     Destroy(this.transform.root.gameObject);
                 }
+                Destroy(other.transform.root.gameObject);
                 break;
         }
     }
