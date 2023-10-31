@@ -16,6 +16,7 @@ TagManager:
   - Dash
   - Shoot
   - Cloak
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
