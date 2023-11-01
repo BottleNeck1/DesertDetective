@@ -70,7 +70,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.2461004
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f624313d47e60ac4092bcda1927e7cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinBounds: {x: -100, y: -100}
-  MaxBounds: {x: 100, y: 100}
+  MinBounds: {x: -10000, y: -10000}
+  MaxBounds: {x: 10000, y: 10000}
 --- !u!1 &5878576847392461907
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0.81, y: 0.81, z: 0.81}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6513634890011352582}
@@ -181,11 +181,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -89
-<<<<<<< Updated upstream
-  m_Sprite: {fileID: 21300000, guid: 886b3381d5da3254fbd8621f2162226a, type: 3}
-=======
-  m_Sprite: {fileID: 21300000, guid: 5098a71c66888244fa746492a2cc93bf, type: 3}
->>>>>>> Stashed changes
+  m_Sprite: {fileID: 21300000, guid: 50ba26a6c82db4b5e9b2ae1844ec8c29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
