@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 2965457438519724520}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 70f4de2310d0c40ee9254527fadfe981, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1072,11 +1072,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4398042736943329125, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -593.5511
+      value: -411.9988
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398042736943329125, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4398042736943329125, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -296.77557
+      value: -205.99945
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398042736943329125, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4804484387799211665, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
       propertyPath: baseText
