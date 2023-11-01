@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 499100365287600699}
   - component: {fileID: -7710179787788413825}
   - component: {fileID: -2802982310386497241}
+  - component: {fileID: 5965692063611325888}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -136,3 +137,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5965692063611325888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563899408204669179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f624313d47e60ac4092bcda1927e7cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinBounds: {x: -10000, y: -10000}
+  MaxBounds: {x: 10000, y: 10000}
