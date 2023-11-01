@@ -140,6 +140,11 @@ public class PlayerMovement : MonoBehaviour
         bounceTime = 0.1f;
     }
 
+    public void Respawn(Vector2 spawn)
+    {
+        this.transform.position = spawn;
+    }
+
     public void ResetDash()
     {
         dashTime = 0;
