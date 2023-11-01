@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ public class PlayerInteract : MonoBehaviour
     public MoneyText moneyText;
     [SerializeField] private GameObject WinScreen;
     [SerializeField] private GameObject LoseScreen;
+    [SerializeField] private GameObject CoinScreen;
     [SerializeField, Tooltip("the script to play sounds")] private PlayerSounds soundsScript;
     [SerializeField ]private int maxHealth = 3;
     private int health = 0;
@@ -19,10 +21,13 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private float invincibleTime = 1;
     private float invincibleTimer = 0;
     private bool invincible = false;
+    private float cloakedTime = 0;
 
     private SpriteRenderer sprite;
     [SerializeField] private Color hurtColor;
     [SerializeField] private Color startColor;
+    [SerializeField] private Color cloakColar;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -33,6 +38,7 @@ public class PlayerInteract : MonoBehaviour
         if(!soundsScript){
             soundsScript = GetComponent<PlayerSounds>();
         }
+        CoinScreen.SetActive(true);
     }
 
     private void FixedUpdate() {
@@ -43,6 +49,12 @@ public class PlayerInteract : MonoBehaviour
                 sprite.color = startColor;
             }
         }
+
+        cloakedTime = GetComponentInParent<PlayerMovement>().GetCloakRefresh();
+        if(cloakedTime > 0)
+            sprite.color = cloakColar;
+        else if(cloakedTime < 0)
+            sprite.color = startColor;
     }
 
     private void OnTriggerEnter2D(Collider2D col) {
@@ -60,8 +72,8 @@ public class PlayerInteract : MonoBehaviour
             case "EnemyHead":
                 Destroy(other.transform.root.gameObject);
                 this.GetComponent<PlayerMovement>().Bounce(Vector2.up * 10);
-                money += 3;
-                moneyText.UpdatePoints(money);
+                //money += 3;
+                //moneyText.UpdatePoints(money);
                 break;
             case "Bouncy":
                 this.GetComponent<PlayerMovement>().Bounce(other.transform.up * 25);
@@ -74,6 +86,22 @@ public class PlayerInteract : MonoBehaviour
                 UnlockAmount = other.GetComponent<GateEvent>().UnlockAmount();
                 CanUnlock = SetCanUnlock(UnlockAmount);
                 GateObject = other.transform.parent.gameObject;
+                break;
+            case "DoubleJump":
+                this.GetComponent<PlayerMovement>().SetDoubleJumpUnlock();
+                Destroy(other);
+                break;
+            case "Dash":
+                this.GetComponent<PlayerMovement>().SetDashUnlock();
+                Destroy(other);
+                break;
+            case "Shoot":
+                this.GetComponent<PlayerMovement>().SetShootUnlock();
+                Destroy(other);
+                break;
+            case "Cloak":
+                this.GetComponent<PlayerMovement>().SetCloakUnlock();
+                Destroy(other);
                 break;
         }
     }
@@ -152,12 +180,14 @@ public class PlayerInteract : MonoBehaviour
         Time.timeScale = 0;
         WinScreen.transform.SetParent(null);
         WinScreen.SetActive(true);
+        CoinScreen.SetActive(false);
         soundsScript.PlayWinSound();
     }
 
     public void Die(){
         LoseScreen.transform.SetParent(null);
         LoseScreen.SetActive(true);
+        CoinScreen.SetActive(false);
         soundsScript.PlayDeathSound();
         sprite.enabled = false;
         this.enabled=false;

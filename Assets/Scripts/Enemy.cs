@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Scripting;
+using UnityEngine.U2D;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,13 +12,20 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float walkRange;
     [SerializeField] private float attackRange;
     [SerializeField] private EnemySounds soundsScript;
+    [SerializeField] private int health = 2;
+    [SerializeField] float damageCooldown = 0.5f;
+    float damageRefresh = 0;
+    bool canDamage = false;
+    
     private float timeSinceLastAttack = 0;
 
     public bool attack;
+    bool playerCloaked = false;
 
     private Rigidbody2D rb;
     private GameObject player;
     private Animator animator;
+    //private SpriteRenderer sprite;
 
     // Start is called before the first frame update
     void Start()
@@ -25,15 +34,16 @@ public class Enemy : MonoBehaviour
         rb = GetComponentInChildren<Rigidbody2D>();
         animator = GetComponent<Animator>();
         soundsScript = GetComponent<EnemySounds>();
+        //sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         timeSinceLastAttack += Time.deltaTime;
-        if (player != null)
+        playerCloaked = player.GetComponent<PlayerMovement>().GetIsCloaked();
+        if (player != null && !playerCloaked)
         {
-
             Vector2 dist = player.transform.position - transform.position;
             Vector2 dir = dist.normalized;
             if (dist.magnitude < attackRange && timeSinceLastAttack > 2)
@@ -63,6 +73,10 @@ public class Enemy : MonoBehaviour
         
         if (attack)
             Attack();
+
+        if (damageRefresh > 0)
+            damageRefresh -= Time.deltaTime;
+        else canDamage = true;
     }
 
     void Attack()
@@ -75,5 +89,26 @@ public class Enemy : MonoBehaviour
         ballInstance.GetComponent<Ball>().Go();
         
         attack = false;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject other = collision.gameObject;
+        switch (other.tag)
+        {
+            case "PlayerBall":    
+                if(canDamage)
+                {
+                    health -= other.GetComponent<harmful>().GetDamage();
+                    damageRefresh = damageCooldown;
+                    canDamage = false;
+                }
+                if (health <= 0)
+                {
+                    Destroy(this.transform.root.gameObject);
+                }
+                Destroy(other.transform.root.gameObject);
+                break;
+        }
     }
 }

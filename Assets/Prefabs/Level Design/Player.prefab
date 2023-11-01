@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8668585685443304136}
   - component: {fileID: 2813059178136305195}
-  - component: {fileID: 3352909903900417358}
+  - component: {fileID: 3278060707076062065}
   m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2965457438519724520}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.04, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -74,18 +74,18 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 1274529178, guid: 680d257595bbea44ca8006e96fcd6873, type: 3}
+  m_Sprite: {fileID: -1714145070, guid: 984c5187133a947cf8881bb1579a954b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &3352909903900417358
+--- !u!95 &3278060707076062065
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 2965457438519724520}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b2cf9bf3452f3494a9c90097e476547e, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -116,6 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1942340884222107336}
   - component: {fileID: 4641218218592816525}
+  - component: {fileID: 3572922653149832876}
   - component: {fileID: 3951909999342016811}
   - component: {fileID: 8160301001249266037}
   - component: {fileID: 6091218642334408965}
@@ -170,6 +171,135 @@ MonoBehaviour:
   JumpForce: 15
   DashDuration: 0.2
   DashCooldown: 0.5
+  ShootCooldown: 3
+  CloakCooldown: 3
+  ball: {fileID: 8899844144299064845, guid: 073d6db091107bb45b76ad27bb06e1e9, type: 3}
+--- !u!114 &3572922653149832876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4028251034248688579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: e5b4b7c028d4e7e44a390fd491dea6d6, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4641218218592816525}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bab714c6-97b0-4baf-aa82-ab4c1c7ac1ea
+    m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4641218218592816525}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f0c8c54a-c4e1-4445-a141-cb799f5a319f
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4641218218592816525}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Dash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 93c4422b-affc-4c24-b491-2ceae70c612a
+    m_ActionName: Player/Dash[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4641218218592816525}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 841f7fda-efba-4a6a-8efb-d9a759365367
+    m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4641218218592816525}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Shoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0e8e4912-0818-40d6-b50e-84f107419c71
+    m_ActionName: Player/Shoot[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4641218218592816525}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: InvisibleClock
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: cbeb2632-583b-4b43-8666-fd2a97bd35db
+    m_ActionName: Player/InvisibleClock[/Keyboard/q]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!70 &3951909999342016811
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -247,12 +377,14 @@ MonoBehaviour:
   moneyText: {fileID: 5335834537932638732}
   WinScreen: {fileID: 1451218173432162713}
   LoseScreen: {fileID: 2244396142329006914}
+  CoinScreen: {fileID: 7549917023017961026}
   soundsScript: {fileID: 0}
   maxHealth: 3
   money: 0
   invincibleTime: 1
   hurtColor: {r: 1, g: 0.032075405, b: 0.032075405, a: 0.61960787}
   startColor: {r: 1, g: 1, b: 1, a: 1}
+  cloakColar: {r: 0.509434, g: 0.48300108, b: 0.48300108, a: 0.6392157}
 --- !u!114 &4043741476355976056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -940,11 +1072,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4398042736943329125, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -697.1494
+      value: -593.5511
       objectReference: {fileID: 0}
     - target: {fileID: 4398042736943329125, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -348.57468
+      value: -296.77557
       objectReference: {fileID: 0}
     - target: {fileID: 4804484387799211665, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
       propertyPath: baseText
@@ -952,7 +1084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6946509600971281119, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: CoinCanvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -975,6 +1107,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1149b8c1becf8ef45a0e458334403b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7549917023017961026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6946509600971281119, guid: 1728157251086d8439ccc02d1dcba188, type: 3}
+  m_PrefabInstance: {fileID: 621571676598097053}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8378162677884140358
 PrefabInstance:
   m_ObjectHideFlags: 0
