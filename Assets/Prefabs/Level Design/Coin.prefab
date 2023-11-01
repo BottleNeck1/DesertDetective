@@ -1,6 +1,10 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< Updated upstream:Assets/Prefabs/Level Design/Coin.prefab
 --- !u!1 &5008270807544615519
+=======
+--- !u!1 &7492420330157578517
+>>>>>>> Stashed changes:Assets/Prefabs/Level Design/Cloak.prefab
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,6 +12,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< Updated upstream:Assets/Prefabs/Level Design/Coin.prefab
   - component: {fileID: 2949770737992515470}
   - component: {fileID: 5529957973142756760}
   - component: {fileID: 1242805117921167309}
@@ -15,16 +20,30 @@ GameObject:
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
+=======
+  - component: {fileID: 7542905362598097983}
+  - component: {fileID: 3664090619828198212}
+  - component: {fileID: 4072886121278207469}
+  - component: {fileID: 6665309030311261839}
+  m_Layer: 0
+  m_Name: Cloak
+  m_TagString: Cloak
+>>>>>>> Stashed changes:Assets/Prefabs/Level Design/Cloak.prefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< Updated upstream:Assets/Prefabs/Level Design/Coin.prefab
 --- !u!4 &2949770737992515470
+=======
+--- !u!4 &7542905362598097983
+>>>>>>> Stashed changes:Assets/Prefabs/Level Design/Cloak.prefab
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Prefabs/Level Design/Coin.prefab
   m_GameObject: {fileID: 5008270807544615519}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -36,12 +55,28 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5529957973142756760
+=======
+  m_GameObject: {fileID: 7492420330157578517}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.29, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &3664090619828198212
+>>>>>>> Stashed changes:Assets/Prefabs/Level Design/Cloak.prefab
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Prefabs/Level Design/Coin.prefab
   m_GameObject: {fileID: 5008270807544615519}
+=======
+  m_GameObject: {fileID: 7492420330157578517}
+>>>>>>> Stashed changes:Assets/Prefabs/Level Design/Cloak.prefab
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,37 +111,63 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< Updated upstream:Assets/Prefabs/Level Design/Coin.prefab
   m_Sprite: {fileID: 21300000, guid: 55e79a40fe6ef834fb96d3a1deb9eaeb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 12, y: 14.29}
+=======
+  m_Sprite: {fileID: 21300000, guid: 0cea2f0d729d27246b62fae2de1c96ce, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 1
+  m_DrawMode: 0
+  m_Size: {x: 10.24, y: 10.24}
+>>>>>>> Stashed changes:Assets/Prefabs/Level Design/Cloak.prefab
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+<<<<<<< Updated upstream:Assets/Prefabs/Level Design/Coin.prefab
 --- !u!114 &1242805117921167309
+=======
+--- !u!114 &4072886121278207469
+>>>>>>> Stashed changes:Assets/Prefabs/Level Design/Cloak.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Prefabs/Level Design/Coin.prefab
   m_GameObject: {fileID: 5008270807544615519}
+=======
+  m_GameObject: {fileID: 7492420330157578517}
+>>>>>>> Stashed changes:Assets/Prefabs/Level Design/Cloak.prefab
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b84fd479d7b268f43a84f1c962720ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream:Assets/Prefabs/Level Design/Coin.prefab
   value: 1
 --- !u!58 &3810459164620102898
+=======
+  value: 3
+--- !u!58 &6665309030311261839
+>>>>>>> Stashed changes:Assets/Prefabs/Level Design/Cloak.prefab
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Prefabs/Level Design/Coin.prefab
   m_GameObject: {fileID: 5008270807544615519}
+=======
+  m_GameObject: {fileID: 7492420330157578517}
+>>>>>>> Stashed changes:Assets/Prefabs/Level Design/Cloak.prefab
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -134,6 +195,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
+<<<<<<< Updated upstream:Assets/Prefabs/Level Design/Coin.prefab
   m_Radius: 8.72
 --- !u!1 &5691065979231723278
 GameObject:
@@ -219,3 +281,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+=======
+  m_Radius: 8.92
+>>>>>>> Stashed changes:Assets/Prefabs/Level Design/Cloak.prefab
