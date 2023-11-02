@@ -27,6 +27,9 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private Color hurtColor;
     [SerializeField] private Color startColor;
     [SerializeField] private Color cloakColar;
+
+    private Vector2 checkpoint; 
+    private bool hasCheckpoint = false;
     
     
     // Start is called before the first frame update
@@ -68,6 +71,10 @@ public class PlayerInteract : MonoBehaviour
                 break;
             case "EndLevel":
                 WinLevel();
+                break;
+            case "Checkpoint":
+                checkpoint = other.transform.position;
+                hasCheckpoint = true;
                 break;
             case "EnemyHead":
                 Destroy(other.transform.root.gameObject);
@@ -185,13 +192,20 @@ public class PlayerInteract : MonoBehaviour
     }
 
     public void Die(){
-        LoseScreen.transform.SetParent(null);
-        LoseScreen.SetActive(true);
-        CoinScreen.SetActive(false);
-        soundsScript.PlayDeathSound();
-        sprite.enabled = false;
-        this.enabled=false;
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        if(hasCheckpoint)
+        {
+            GetComponent<PlayerMovement>().Respawn(checkpoint);
+        }
+        else
+        {
+            LoseScreen.transform.SetParent(null);
+            LoseScreen.SetActive(true);
+            CoinScreen.SetActive(false);
+            soundsScript.PlayDeathSound();
+            sprite.enabled = false;
+            this.enabled = false;
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        }
     }
 }
